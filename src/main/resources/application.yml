@@ -1,0 +1,17 @@
+
+spring:
+  jpa:
+    properties:
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+      hibernate:
+        implicit_naming_strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        format_sql: true
+    show-sql: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_SCHEMA}?autoReconnect=true&useSSL=false&useTimezone=true&serverTimezone=${TZ}&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USENAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      idle-timeout: 10000
