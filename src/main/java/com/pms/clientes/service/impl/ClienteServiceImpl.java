@@ -4,6 +4,7 @@ import com.pms.clientes.dto.ClienteDTO;
 import com.pms.clientes.model.Cliente;
 import com.pms.clientes.repository.ClienteRepository;
 import com.pms.clientes.service.ClienteService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.findById(id);
     }
 
+    @Transactional
     public Cliente createCliente(ClienteDTO clienteDTO) {
         Cliente cliente = new Cliente(
                 clienteDTO.nombre(),
@@ -38,6 +40,7 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.save(cliente);
     }
 
+    @Transactional
     public Cliente updateCliente(Integer id, ClienteDTO clienteDTO) {
         return clienteRepository.findById(id)
                 .map(cliente -> {
